@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>{{page_title}}</h1>
+
+<h2>Book: {{book.id}}</h2>
+<h3>Title: {{book.title}}</h3>
+<h3>Author: {{book.author}}</h3>
+<h3>Description: {{book.description}}</h3>
+<h3>Year: {{book.year}}</h3>
+<h3>Rating: {{book.rating}}</h3>
+<h4>Posted by: {{ book.posted_by }}</h3>
+<h5>Posted on: {{ book.created_at }}</h3>
+<h5>Last Updated: {{ book.updated_at }}</h3>
+
+
+{% if book.posted_by == request.user %}
+  <a href="{% url 'book_update' book.id %}">Update Book</a>
+  <a href="{% url 'book_delete' book.id %}">Delete Book</a>
+{% endif %
+
+{% endblock %}
